@@ -65,6 +65,11 @@ jobs:
           cd $GITHUB_WORKSPACE/wine
           make -j$(sysctl -n hw.ncpu 2>/dev/null)
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: wine-staging
+          path: ${{ github.workspace }}
+
   wine-devel:
     runs-on:  macos-latest
 
@@ -121,3 +126,8 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/wine
           make -j$(sysctl -n hw.ncpu 2>/dev/null)
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: wine-devel
+          path: ${{ github.workspace }}
